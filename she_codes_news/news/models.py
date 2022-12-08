@@ -9,5 +9,4 @@ class NewsStory(models.Model):
         USER, on_delete=models.CASCADE
     )
     pub_date = models.DateTimeField()
-    # pub_time = models.TimeField() 
     content = models.TextField()
