@@ -8,6 +8,13 @@
 
     {% block content%}
 
+    <a href="{% url 'news:newStory' %}">Write New Story</a>
+    <div>
+        {% if user.is_autheticated %}
+            <a href="{% url 'news:newStory' %}">Write New Story</a>
+        {% endif %}
+    </div>
+
     <h2>Latest News</h2>
 
     <div id="latest-stories">
@@ -32,6 +39,6 @@
         {% endif %}
     </div>
 
-    <a href="{% url 'news:newStory' %}">Write New Story</a>
+
 
     {% endblock %}

@@ -6,7 +6,8 @@ class NewsStory(models.Model):
     title = models.CharField(max_length=200)
     # author = models.CharField(max_length=200)
     author = models.ForeignKey(
-        USER, on_delete=models.CASCADE
+        USER, on_delete=models.CASCADE, related_name="stories"
     )
     pub_date = models.DateTimeField()
     content = models.TextField()
+    image = models.URLField(max_length=200,db_index=True)
