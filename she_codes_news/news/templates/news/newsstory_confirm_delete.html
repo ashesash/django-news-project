@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1> you wanna delete? <h1>
+
+<h2> {{ newsstory.title }} </h2>
+<p> {{ newsstory.content }} </p>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Yes I am Sure">
+    </form>
+  </div>
+</div>
+
+{% endblock %}

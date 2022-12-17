@@ -2,6 +2,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class IndexView(generic.ListView):
@@ -32,4 +33,27 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-   
+class StoryEditView(LoginRequiredMixin, generic.UpdateView):
+    model = NewsStory
+    fields = ['title', 'pub_date', 'content']
+
+    def get_success_url(self) -> str:
+        return reverse_lazy('news:story', kwargs={'pk':self.kwargs['pk']})
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        # if not self.request.user.is_authenticated:
+        #     raise qs.model.DoesNotExist
+        # qs = qs.filter(author=self.request.user)
+        return qs.filter(author=self.request.user)
+
+class StoryDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = NewsStory
+    success_url = reverse_lazy('news:index')
+
+    def get_queryset(self):
+        # filter to only allow to author to delete own story
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
+
+
