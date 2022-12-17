@@ -1,5 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404, redirect
 from .models import NewsStory
 from .forms import StoryForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -25,7 +27,7 @@ class StoryView(generic.DetailView):
     
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
-    context_object_name = 'storyForm'
+    # context_object_name = 'storyForm'
     template_name = 'news/createStory.html'
     success_url = reverse_lazy('news:index')
 
@@ -57,3 +59,12 @@ class StoryDeleteView(LoginRequiredMixin, generic.DeleteView):
         return qs.filter(author=self.request.user)
 
 
+    ''' when given a pk for a newsstory, add the suer to like, or if exists, remove the user'''
+@login_required
+def like(request, pk):
+    news_story = get_object_or_404(NewsStory, pk=pk)
+    if news_story.favourited_by.filter(username=request.user.username).exists():
+        news_story.favourited_by.remove(request.user)
+    else:
+        news_story.favourited_by.add(request.user)
+    return redirect(reverse_lazy('news:story', kwargs={'pk':pk}))
