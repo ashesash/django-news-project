@@ -18,8 +18,12 @@
   {% if story.favourited_by.count %}
     Liked By: {{ story.favourited_by.count }} user{{story.favourited_by.count|pluralize:"s"}}
     ({% for user in story.favourited_by.all %}{{ user.username }}  {% endfor %})
-    {% endif %}
-    <a href="{% url 'news:like' story.id %}"><button>{% if request.user in story.favourited_by.all %} Unlike {% else %} Like {% endif %} </button>
+  {% endif %}
+  <a href="{% url 'news:like' story.id %}"><button>{% if request.user in story.favourited_by.all %} Unlike {% else %} Like {% endif %} </button>
+  <br>
+  <a href="{% url 'news:storyEdit' story.id %}"><button>Edit</button>
+  <br><br>
+  <a href="{% url 'news:storyDelete' story.id %}"><button>Delete</button>
 </div>
 
 {% endblock %}
