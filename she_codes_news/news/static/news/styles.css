@@ -61,7 +61,7 @@
 #story-card-4 img {
     width: 33%;
     height: 100%;
-    margin-right: 5px;
+    /* margin-right: 5px; */
 }
 
 #all-stories {
@@ -83,4 +83,9 @@
     float: right;
     margin: 0 0 10px 10px;
     width: 50%;
+}
+
+nav ul {
+    list-style-type: none;
+    margin-left: 50%;
 }

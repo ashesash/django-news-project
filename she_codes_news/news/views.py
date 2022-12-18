@@ -13,11 +13,11 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         '''Return all news stories.'''
         return NewsStory.objects.all()
-
+        
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_stories'] = NewsStory.objects.order_by('-pub_date').all()[:4]
-        context['all_stories'] = NewsStory.objects.all()
+        context['latest_stories'] = NewsStory.objects.all().order_by("-pub_date")[:4]
+        context['all_stories'] = NewsStory.objects.all().order_by("-pub_date")
         return context
 
 class StoryView(generic.DetailView):
@@ -37,7 +37,7 @@ class AddStoryView(generic.CreateView):
 
 class StoryEditView(LoginRequiredMixin, generic.UpdateView):
     model = NewsStory
-    fields = ['title', 'pub_date', 'content']
+    fields = ['title', 'pub_date', 'content', 'image']
 
     def get_success_url(self) -> str:
         return reverse_lazy('news:story', kwargs={'pk':self.kwargs['pk']})
