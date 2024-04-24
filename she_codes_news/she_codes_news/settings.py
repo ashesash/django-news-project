@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(jkv!qs0&8mc=ftuod-kzmdni25#vl+s!i@f!yk0*@tuvm16x+'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['thunder-news.up.railway.app']
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1', '0.0.0.0').split(',')
 CSRF_TRUSTED_ORIGINS = ['https://thunder-news.up.railway.app/']
 
 # Application definition
