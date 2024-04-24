@@ -25,8 +25,8 @@ SECRET_KEY = '(jkv!qs0&8mc=ftuod-kzmdni25#vl+s!i@f!yk0*@tuvm16x+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['thunder-news.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://thunder-news.up.railway.app/']
 
 # Application definition
 
