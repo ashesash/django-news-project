@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}"/>
+{% endblock %} 
+
+{% block content %}
+
+<h2 id="profile-title">Author Profile </h2>
+<h2 id="profile-author">{{ customuser.username }}</h2>
+
+<h2 id="profile-heading">Titles of Works</h2>
+
+<ul id="profile-story-titles">
+{% for story in customuser.stories.all %}
+    <li>{{ story.title }}</li>
+{% endfor %}
+</ul>
+<h2 id="profile-heading"> All Articles</h2>
+
+<div id="all-stories">
+    {% if customuser.stories.all %} 
+        {% for story in customuser.stories.all %} 
+            {% include "news/storyCard.html" with story=story %} 
+        {% endfor %} 
+    {% else %}
+        <p>No stories are available.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

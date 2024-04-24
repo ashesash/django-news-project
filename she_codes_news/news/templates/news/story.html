@@ -14,13 +14,15 @@
     <img src="{{ story.image }}" />
     {{ story.content|linebreaks }}
   </div>
+  <a href="{% url 'news:profileDetail' story.author.id %}">View author profile and read more stories by {{ story.author }}</a>
 </div>
+<div>
   {% if story.favourited_by.count %}
     Liked By: {{ story.favourited_by.count }} user{{story.favourited_by.count|pluralize:"s"}}
     ({% for user in story.favourited_by.all %}{{ user.username }}  {% endfor %})
   {% endif %}
   <a href="{% url 'news:like' story.id %}"><button>{% if request.user in story.favourited_by.all %} Unlike {% else %} Like {% endif %} </button>
-  <br>
+  <br><br>
   <a href="{% url 'news:storyEdit' story.id %}"><button>Edit</button>
   <br><br>
   <a href="{% url 'news:storyDelete' story.id %}"><button>Delete</button>

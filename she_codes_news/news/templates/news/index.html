@@ -8,13 +8,13 @@
 
     {% block content%}
 
+    <h2 id="index-heading">Latest News</h2>
+    
     <div>
         {% if user.is_authenticated %}
             <a href="{% url 'news:newStory' %}">Write New Story</a>
         {% endif %}
     </div>
-
-    <h2>Latest News</h2>
 
     <div id="latest-stories">
         {% if latest_stories %}
@@ -26,10 +26,11 @@
         {% endif %}
     </div>
 
+    <h2 id="index-heading">All News</h2>
+
     <div id="all-stories">
         {% if latest_stories %}
             {% for story in all_stories %}
-                {% comment %} <p>{{ story.title }}</p> {% endcomment %}
                 {% include './storyCard.html' with story=story %}
             {% endfor %}
         {% else %}
@@ -39,4 +40,4 @@
 
 
 
-    {% endblock %}
+    {% endblock %}``

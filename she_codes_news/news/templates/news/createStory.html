@@ -1,4 +1,24 @@
+
 {% extends "base.html" %}
+{% load static %} 
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %} 
+
+{% block content %}
+<h2 id=profile-heading>Submit a Story</h2>
+<div id="create-story-block">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" value="submit" class="user-button">Create Story</button>
+    </form>
+</div>
+{% endblock %}
+
+
+{% comment %} {% extends "base.html" %}
 {% block content %}
 
 {% if request.user.is_authenticated %}
@@ -13,4 +33,4 @@
 <strong> Login to create an article </strong>
 
 {% endif %}
-{% endblock %}
+{% endblock %} {% endcomment %}

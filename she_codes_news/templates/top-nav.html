@@ -1,0 +1,7 @@
+<div id="user-welcome">
+    {% if request.user.is_authenticated %}
+        <a> Welcome back, {{ user.username }}</a>
+    {% else %}
+        <a href="{% url 'users:createAccount' %}"> Sign up and start blogging!</a>
+    {% endif %}
+</div>

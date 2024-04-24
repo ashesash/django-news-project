@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, redirect
 from .models import NewsStory
 from .forms import StoryForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth import get_user_model
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -68,3 +68,7 @@ def like(request, pk):
     else:
         news_story.favourited_by.add(request.user)
     return redirect(reverse_lazy('news:story', kwargs={'pk':pk}))
+
+class AuthorProfileView(generic.DetailView):
+    model = get_user_model()
+    template_name = 'news/profileDetail.html'
