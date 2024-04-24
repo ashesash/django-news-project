@@ -19,7 +19,7 @@ RUN set -ex && \
 
 COPY she_codes_news/ /code/
 
-RUN python manage.py collectstatic --noinput
+# RUN python manage.py collectstatic --noinput
 RUN chmod +x /code/run.sh
 
 EXPOSE 8000
