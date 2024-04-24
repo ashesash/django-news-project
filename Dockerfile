@@ -17,7 +17,7 @@ RUN set -ex && \
     rm -rf /root/.cache/
 
 
-COPY learnable/ /code/
+COPY she_codes_news/ /code/
 
 RUN python manage.py collectstatic --noinput
 RUN chmod +x /code/run.sh
