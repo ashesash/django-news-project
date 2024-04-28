@@ -19,10 +19,10 @@ RUN set -ex && \
 
 COPY she_codes_news/ /code/
 
-# RUN python manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
 RUN chmod +x /code/run.sh
 
 EXPOSE 8000
 
 # replace demo.wsgi with <project_name>.wsgi
-CMD ["/code/run.sh"]
+CMD ["/she_codes_news/run.sh"]
