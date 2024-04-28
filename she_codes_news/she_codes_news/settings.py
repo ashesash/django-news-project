@@ -30,7 +30,6 @@ DEBUG = os.environ.get('DEBUG') == 'True'
 
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1').split(',')
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app/']
 
 # Application definition
 
