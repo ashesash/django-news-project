@@ -22,9 +22,9 @@
     ({% for user in story.favourited_by.all %}{{ user.username }}  {% endfor %})
   {% endif %}
   <a href="{% url 'news:like' story.id %}"><button>{% if request.user in story.favourited_by.all %} Unlike {% else %} Like {% endif %} </button>
-  <br><br>
+  {% comment %} <br><br> {% endcomment %}
   <a href="{% url 'news:storyEdit' story.id %}"><button>Edit</button>
-  <br><br>
+  {% comment %} <br><br> {% endcomment %}
   <a href="{% url 'news:storyDelete' story.id %}"><button>Delete</button>
 </div>
 

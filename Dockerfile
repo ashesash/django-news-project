@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION=3.10-slim-buster
+ARG PYTHON_VERSION=3.12-slim
 
 FROM python:${PYTHON_VERSION}
 
@@ -10,19 +10,16 @@ RUN mkdir -p /code
 WORKDIR /code
 
 COPY requirements.txt /tmp/requirements.txt
-
 RUN set -ex && \
     pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt && \
     rm -rf /root/.cache/
+COPY she_codes_news/ /code
 
-
-COPY she_codes_news/ /code/
-
+# ENV SECRET_KEY "UD664s0johJ7TqheBj57AGCizCNe7waURkUQQr1K3CurF82O2Z"
 RUN python manage.py collectstatic --noinput
 RUN chmod +x /code/run.sh
 
 EXPOSE 8000
 
-# replace demo.wsgi with <project_name>.wsgi
-CMD ["/she_codes_news/run.sh"]
+CMD ["/code/run.sh"]
