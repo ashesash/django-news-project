@@ -7,9 +7,12 @@ body {
 
 header {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    background-color: white;
     border-bottom: 1px solid #000;
+    margin-bottom: 20px;
 }
 
 img {
@@ -27,7 +30,7 @@ h2 {
     font-family: 'Domine', serif;
     letter-spacing: 0.25px;
     font-size: 2rem;
-    margin-bottom: 5%;
+    text-align: center;
 }
 
 h3 {
@@ -58,11 +61,14 @@ h4 {
 }
 
 nav {
-    flex-basis: 20%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     padding-right: 2%;
+}
+
+nav ul {
+    list-style-type: none;
 }
 
 header a {

@@ -1,13 +1,11 @@
-<nav style="margin: 0% 20% 0% 0%">
-    <ul>
-    <li><a href="{% url 'news:index' %}">Home</a></li>
+<nav>
+    <a href="{% url 'news:index' %}">Home</a>
     {% if request.user.is_authenticated %}
-        <li><a href="{% url 'users:profile' pk=request.user.id %}">My Profile</a></li>
-        <li><a href="{% url 'news:newStory' %}">Write New Story</a></li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <a href="{% url 'users:profile' pk=request.user.id %}">My Profile</a>
+        <a href="{% url 'news:newStory' %}">Write New Story</a>
+        <a href="{% url 'logout' %}">Sign Out</a>
     {% else %}
-        <li> <a href="{% url 'login' %}">Login</a></li>
-        <li> <a href="{% url 'users:createAccount' %}">Sign Up</a></li>
+        <a href="{% url 'login' %}">Sign In</a>
+        <a href="{% url 'users:createAccount' %}">Sign Up</a>
     {% endif %}
-    </ul>
 </nav>

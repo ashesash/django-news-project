@@ -7,20 +7,24 @@
 
 {% block content %}
 
+<div id="story-img">
+  <img src="{{ story.image }}" />
+</div>
 <div id="story-wrapper">
-  <h2>{{ story.title }}</h2>
-  <h4>{{ story.author }}</h4>
   <div id="story-content">
-    <img src="{{ story.image }}" />
+    <h2>{{ story.title }}</h2>
+    <h4>{{ story.author }}</h4>
     {{ story.content|linebreaks }}
   </div>
   <a href="{% url 'news:profileDetail' story.author.id %}">View author profile and read more stories by {{ story.author }}</a>
 </div>
-<div>
-  {% if story.favourited_by.count %}
-    Liked By: {{ story.favourited_by.count }} user{{story.favourited_by.count|pluralize:"s"}}
-    ({% for user in story.favourited_by.all %}{{ user.username }}  {% endfor %})
-  {% endif %}
+  <div id="liked-by">
+    {% if story.favourited_by.count %}
+      Liked By: {{ story.favourited_by.count }} user{{story.favourited_by.count|pluralize:"s"}}
+      ({% for user in story.favourited_by.all %}{{ user.username }}  {% endfor %})
+    {% endif %}
+</div>
+<div id="story-buttons">
   <a href="{% url 'news:like' story.id %}"><button>{% if request.user in story.favourited_by.all %} Unlike {% else %} Like {% endif %} </button>
   {% comment %} <br><br> {% endcomment %}
   <a href="{% url 'news:storyEdit' story.id %}"><button>Edit</button>

@@ -16,21 +16,3 @@
     </form>
 </div>
 {% endblock %}
-
-
-{% comment %} {% extends "base.html" %}
-{% block content %}
-
-{% if request.user.is_authenticated %}
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="submit">
-</form>
-
-{% else %}
-<br>
-<strong> Login to create an article </strong>
-
-{% endif %}
-{% endblock %} {% endcomment %}
