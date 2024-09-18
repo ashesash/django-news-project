@@ -12,6 +12,10 @@
     object-fit: cover;
 }
 
+.story-card img:hover {
+    filter: grayscale(50%);
+}
+
 #latest-stories {
     display: grid;
     grid-template-columns: 1fr 1fr;
