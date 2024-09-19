@@ -85,11 +85,6 @@ Make sure you have the following installed:
 
 The latest 4 stories are displayed in a carousel on the homepage, using the Glide.js library. The carousel autoplays by default and pauses when hovered.
 
-#### To Customize the Carousel:
-
-- Edit the `carousel.js` file in the `news/static/news/js/` directory to change the autoplay speed, pause on hover, and other settings.
-
-
 ## Customization
 
 ### Changing the Number of Stories in the Carousel
