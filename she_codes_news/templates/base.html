@@ -10,6 +10,8 @@
         <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
         <link rel="shortcut icon" type="image/svg" href="{% static 'favicon.svg' %}" >
+        <link href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3/dist/css/glide.core.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
         {% block stylesheets %}{% endblock %}
     </head>
 
@@ -23,6 +25,15 @@
             </div>
             {% include './nav.html' %}
         </header>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                new Glide('.glide', {
+                    type: 'carousel',
+                    autoplay: 3000,
+                    hoverpause: false
+                }).mount();
+            });
+        </script>
         {% block content %}{% endblock %}
     </body>
 </html>
