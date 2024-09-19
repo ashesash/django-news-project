@@ -2,6 +2,9 @@
 
 A news blog built with Django featuring a carousel for displaying the latest news stories. This project demonstrates Django's class-based views and static files handling, alongside Glide.js for an image carousel.
 
+The deployed app can be accessed here:
+[Thunder News](https://thunder-news.fly.dev/)
+
 ## Table of Contents
 
 - [Features](#features)
